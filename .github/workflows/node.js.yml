@@ -10,6 +10,11 @@ on:
   pull_request:
     branches: ["main"]
 
+# if a workflow is working now the new workflows no start
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
